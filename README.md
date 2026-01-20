@@ -1,73 +1,70 @@
-# React + TypeScript + Vite
+# Vejr App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+En simpel vejr-applikation lavet med React, TypeScript, Vite og Tailwind CSS.
 
-Currently, two official plugins are available:
+## Hvad er det?
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Dette er et begynderprojekt der viser:
 
-## React Compiler
+- 📱 Hvordan man laver en simpel React app
+- 🎨 Hvordan man bruger Tailwind CSS til styling
+- 🌤️ Hvordan man henter data fra et API (Open-Meteo)
+- 🔄 Hvordan man bruger `useState` og `useEffect` hooks
+- 📑 Hvordan man skifter mellem forskellige visninger uden routing
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Kom i gang
 
-## Expanding the ESLint configuration
+### Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Kør udviklings-server
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+Åbn [http://localhost:5173](http://localhost:5173) i din browser.
+
+### Byg til produktion
+
+```bash
+npm run build
+```
+
+## Sådan virker det
+
+### App.tsx (hovedfilen)
+
+- Henter vejrdata fra Open-Meteo API når appen starter
+- Bruger `useState` til at gemme data og hvilken fane der er aktiv
+- Bruger `useEffect` til at hente data automatisk
+- Viser forskellige komponenter baseret på hvilken fane brugeren klikker på
+
+### Komponenter
+
+- **WeatherHome** - Viser det aktuelle vejr
+- **WeatherForecast** - Viser 3-dages prognose
+- **WeatherAbout** - Viser information om appen
+
+### Ingen routing
+
+Dette projekt bruger IKKE React Router. I stedet bruger vi `useState` til at skifte mellem forskellige visninger. Dette er enklere for begyndere at forstå.
+
+## Teknologier
+
+- **React** - JavaScript framework til at bygge brugergrænseflader
+- **TypeScript** - Tilføjer type-sikkerhed til JavaScript
+- **Vite** - Hurtig udviklings-server og build-værktøj
+- **Tailwind CSS** - CSS framework til styling
+- **Open-Meteo API** - Gratis vejr API (ingen API-nøgle nødvendig)
+
+## Links
+
+- [React dokumentation](https://react.dev/)
+- [TypeScript dokumentation](https://www.typescriptlang.org/)
+- [Vite dokumentation](https://vitejs.dev/)
+- [Tailwind CSS dokumentation](https://tailwindcss.com/)
+- [Open-Meteo API](https://open-meteo.com/)
